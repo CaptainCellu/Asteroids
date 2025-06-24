@@ -1,3 +1,4 @@
+import sys
 import pygame
 from constants import *
 from circleshape import *
@@ -32,6 +33,14 @@ def main():
                 return
 
         updatable.update(dt)
+
+        for object in asteroids:
+            if object.collision(player):
+                print("")
+                print("--------------")
+                print("| Game over! |")
+                sys.exit( "--------------")
+                
 
         pygame.Surface.fill(screen, (0,0,0))
         for object in drawable:
